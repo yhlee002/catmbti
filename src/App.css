@@ -1,0 +1,15 @@
+.App {
+    font-family: "GangwonEdu_OTFBoldA";
+}
+
+@font-face {
+    font-font: "GowunBatang-Regular";
+    src: url(/src/assets/fonts/GowunBatang-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'GangwonEdu_OTFBoldA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
