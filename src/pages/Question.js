@@ -5,22 +5,57 @@ import {QuestionData} from "../assets/data/questiondata";
 import {useNavigate} from "react-router-dom";
 
 const Question = () => {
+    const [questionNo, setQuestionNo] = React.useState(0);
+    console.log("questionNo", questionNo);
+
+    const handleClickBtn = (num, type) => {
+        // 기존 스코어에 더할 값 계산(기존의 값 + 배점)
+
+        /*
+        totalScore.map((e) => function(e){
+            if (e.id === type) {
+                const addScore = e.score + num;
+                const newObj = {id: e.id, score: addScore};
+                totalScore.splice(totalScore.indexOf(e), 1, newObj);
+            }
+        });
+        */
+
+        // 소스 코드 줄이기(type이 일치하는 객체만 새 객체 반환)
+        const newScore = totalScore.map((e) =>
+            e.id === type ? {id: e.id, score: e.score + 1} : e
+        );
+        setTotalScore(newScore);
+        if (questionNo + 1 !== QuestionData.length) {
+            setQuestionNo(questionNo + 1);
+        } else {
+            navigate("/result");
+        }
+    }
+
+    const [totalScore, setTotalScore] = React.useState([
+        {id: "EI", score: 0},
+        {id: "SN", score: 0},
+        {id: "TF", score: 0},
+        {id: "JP", score: 0},
+    ])
+
     const navigate = useNavigate();
     const handleClickBackBtn = () => {
         navigate("/");
     }
   return (
       <Wrapper>
-          <ProgressBar animated now={10} variant="success" style={{marginTop: "20px"}}/>
-          <Title>{QuestionData[0].title}</Title>
+          <ProgressBar animated now={questionNo / QuestionData.length * 100} variant="success" style={{marginTop: "20px"}}/>
+          <Title>{QuestionData[questionNo].title}</Title>
           <ButtonGroup>
-              <Button style={{width: "40%", minHeight: "200px", fontSize: "15pt"}}>{QuestionData[0].answerA}</Button>
+              <Button style={{width: "40%", minHeight: "200px", fontSize: "15pt"}} onClick={()=>handleClickBtn(1, QuestionData.type)}>{QuestionData[questionNo].answerA}</Button>
               <Button style={{
                   width: "40%",
                   minHeight: "200px",
                   fontSize: "15pt",
                   marginLeft: "20px"
-              }}>{QuestionData[0].answerB}</Button>
+              }} onClick={()=>handleClickBtn(0, QuestionData.type)}>{QuestionData[questionNo].answerB}</Button>
           </ButtonGroup>
           <div style={{display: "flex", justifyContent: "right", marginTop: "14px"}}>
               <Button style={{backgroundColor: "#999999", border: "1px solid #7B7A7AFF"}} onClick={handleClickBackBtn}>Go Main</Button>
