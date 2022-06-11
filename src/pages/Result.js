@@ -7,19 +7,19 @@ import ResultData from "../assets/data/resultdata";
 
 const Result = () => {
   const navigate = useNavigate();
-  const handleClickButton = () => {
-    navigate("/");
-  }
+
   return (
       <Wrapper>
         <Header>예비집사 판별기</Header>
         <Contents>
           <Title>결과 보기</Title>
           <LogoImage>
-            <img className="rounded-pill" src={PangImage} width={350} height={520}/>
+            <img className="rounded-pill" src={ResultData[0].image} height={520}/>
           </LogoImage>
-          <Desc>예비 집사님과 찰떡 궁합인 고양이는 아비시니안입니다.</Desc>
-          <Button style={{fontFamily: "GowunBatang-Regular"}} onClick={handleClickButton}>테스트 다시하기</Button>
+          <Desc>예비 집사님과 찰떡 궁합인 고양이는 {ResultData[0].name}입니다.
+            <div>{ResultData[0].desc}</div>
+          </Desc>
+          <Button style={{fontFamily: "GowunBatang-Regular"}} onClick={navigate("/")}>테스트 다시하기</Button>
         </Contents>
       </Wrapper>
   )

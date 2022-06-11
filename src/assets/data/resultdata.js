@@ -16,7 +16,7 @@ import Persian from "../catimg/Persian.jpeg";
 import MaineCoon from "../catimg/MaineCoon.jpeg";
 
 
-const Resultdata = [
+const ResultData = [
     {
         id: 1,
         name: "러시안 블루",
@@ -130,3 +130,5 @@ const Resultdata = [
         image: `${EuropeanShorthair}`
     }
 ]
+
+export default ResultData;
