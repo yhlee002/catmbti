@@ -29,6 +29,8 @@ const Question = () => {
         if (questionNo + 1 !== QuestionData.length) {
             setQuestionNo(questionNo + 1);
         } else {
+            // mbti 도출
+
             navigate("/result");
         }
     }
@@ -75,6 +77,7 @@ const Title = styled.div`
   font-size: 30pt;
   text-align: center;
   font-family: "GangwonEdu_OTFBoldA";
+  margin: 20px 0 30px 0;
 `
 
 const ButtonGroup = styled.div`

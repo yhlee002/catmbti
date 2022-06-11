@@ -52,6 +52,7 @@ const Title = styled.div`
   font-size: 30pt;
   margin-top: 40px;
   font-family: "GangwonEdu_OTFBoldA";
+  margin: 20px 0 30px 0;
 `
 
 const LogoImage = styled.div`

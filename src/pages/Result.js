@@ -19,7 +19,7 @@ const Result = () => {
           <Desc>예비 집사님과 찰떡 궁합인 고양이는 {ResultData[0].name}입니다.
             <div>{ResultData[0].desc}</div>
           </Desc>
-          <Button style={{fontFamily: "GowunBatang-Regular"}} onClick={navigate("/")}>테스트 다시하기</Button>
+          <Button style={{fontFamily: "GowunBatang-Regular"}} onClick={() => navigate("/")}>테스트 다시하기</Button>
         </Contents>
       </Wrapper>
   )
