@@ -2,11 +2,10 @@ import React from 'react';
 import styled from "styled-components";
 import {Button, ProgressBar} from "react-bootstrap";
 import {QuestionData} from "../assets/data/questiondata";
-import {useNavigate} from "react-router-dom";
+import {createSearchParams, useNavigate} from "react-router-dom";
 
 const Question = () => {
     const [questionNo, setQuestionNo] = React.useState(0);
-    console.log("questionNo", questionNo);
 
     const handleClickBtn = (num, type) => {
         // 기존 스코어에 더할 값 계산(기존의 값 + 배점)
@@ -30,8 +29,18 @@ const Question = () => {
             setQuestionNo(questionNo + 1);
         } else {
             // mbti 도출
+            const mbti = newScore.reduce(
+                (acc, curr) =>
+                    acc + (curr.score >= 2 ? curr.id.substring(0, 1) : curr.id.substring(1, 2)),
+                        "" // Arrays.reduce의 초깃값 설정
+            );
 
-            navigate("/result");
+            navigate({
+                pathname: "/result",
+                search: `?${createSearchParams({
+                    mbti: mbti
+                })}`
+            });
         }
     }
 

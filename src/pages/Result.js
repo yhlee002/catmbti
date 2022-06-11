@@ -1,12 +1,19 @@
 import React from 'react';
 import styled from "styled-components";
-import PangImage from '../assets/main-cat.jpg';
 import Button from 'react-bootstrap/Button';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, useSearchParams} from 'react-router-dom';
 import ResultData from "../assets/data/resultdata";
 
 const Result = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const mbti = searchParams.get("mbti");
+  const [resultData, setResultData] = React.useState({});
+
+  React.useEffect(()=>{
+      const result = ResultData.find((e) => (e.mbti === mbti));
+      setResultData(result);
+  }, [mbti])
 
   return (
       <Wrapper>
@@ -14,10 +21,10 @@ const Result = () => {
         <Contents>
           <Title>결과 보기</Title>
           <LogoImage>
-            <img className="rounded-pill" src={ResultData[0].image} height={520}/>
+            <img className="rounded-pill" src={resultData.image} height={520}/>
           </LogoImage>
-          <Desc>예비 집사님과 찰떡 궁합인 고양이는 {ResultData[0].name}입니다.
-            <div>{ResultData[0].desc}</div>
+          <Desc>예비 집사님과 찰떡 궁합인 고양이는 {resultData.name}입니다.
+            <div>{resultData.desc}</div>
           </Desc>
           <Button style={{fontFamily: "GowunBatang-Regular"}} onClick={() => navigate("/")}>테스트 다시하기</Button>
         </Contents>
