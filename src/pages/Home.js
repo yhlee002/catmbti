@@ -16,7 +16,7 @@ const Home = () => {
         <Contents>
           <Title>나에게 맞는 주인님은?</Title>
           <LogoImage>
-            <img className="rounded-pill" src={PangImage} width={350} height={520}/>
+            <img alt="main image" className="rounded-pill" src={PangImage} width={350} height={520}/>
           </LogoImage>
           <Desc>MBTI를 기반으로 하는 나랑 잘맞는 고양이 찾기</Desc>
           <Button style={{fontFamily: "GowunBatang-Regular"}} onClick={handleClickButton}>테스트 시작하기</Button>
